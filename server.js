@@ -4,6 +4,7 @@ const bodyParser = require ("body-parser");
 var currentNumPLayers = 0;
 var tSum =0;
 var nameList = [];
+var sessionCount = 0;
 var app = express();
 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -30,11 +31,15 @@ if(nameList.length<numPlayersLocal){
   res.status(200).send("0");
 }else{
   console.log("sending sum "+tSum);
-//  res.status(200).send(tSum);
 res.send(tSum.toString());
-tSum = 0;
-currentNumPLayers = 0;
-nameList = [];
+sessionCount++;
+if(sessionCount === numPlayersLocal)
+{
+	tSum = 0;
+	currentNumPLayers = 0;
+	nameList = [];
+	sessionCount = 0;
+}
 }
 
 });
