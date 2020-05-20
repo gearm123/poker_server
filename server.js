@@ -32,6 +32,9 @@ if(nameList.length<numPlayersLocal){
   console.log("sending sum "+tSum);
 //  res.status(200).send(tSum);
 res.send(tSum.toString());
+tSum = 0;
+currentNumPLayers = 0;
+nameList = [];
 }
 
 });
