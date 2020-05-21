@@ -32,9 +32,14 @@ if(nameList.length<numPlayersLocal){
 }else{
   console.log("sending sum "+tSum);
 res.send(tSum.toString());
-sessionCount++;
-if(sessionCount === numPlayersLocal)
+if(nameList.includes(name))
 {
+	sessionCount++;
+}
+ console.log("session count is  "+sessionCount+" and local num is " + numPlayersLocal);
+if(sessionCount == numPlayersLocal)
+{
+	console.log("got to if");
 	tSum = 0;
 	currentNumPLayers = 0;
 	nameList = [];
